@@ -14,14 +14,24 @@ students = [
   {name: "Norman Bates", cohort: :november}
 ]
 =end
+
+class Student
+  def initialize(name, cohort)
+    @name = name
+    @cohort = cohort
+  end
+
+  def print_student
+    puts "#{@name} joined in the Cohort: #{@cohort}"
+  end
+
+end
+
 students = []
 # Method to print list of students
 def print_student_list(students)
   puts "Students:"
   puts "----------------"
-  students.each do |student|
-    puts "#{student[:name]}, Cohort: #{student[:cohort]}"
-  end
   puts "Overall, we have #{students.count} students"
 end
 
@@ -39,7 +49,8 @@ def add_student(students)
   name = gets.chomp
   puts "Enter cohort of student:"
   cohort = gets.chomp.to_sym
-  students.push({name: name, cohort: cohort})
+  new_student = Student.new(name, cohort)
+  new_student.print_student #this is to try it out if it's working
 end
 
 def delete_student(students)
