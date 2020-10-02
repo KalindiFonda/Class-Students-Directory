@@ -1,27 +1,28 @@
-# Declaring array of student hashes
-=begin
-students = [
-  {name: "Dr. Hannibal Lecter", cohort: :november},
-  {name: "Darth Vader", cohort: :november},
-  {name: "Nurse Ratched", cohort: :november},
-  {name: "Michael Corleone", cohort: :november},
-  {name: "Alex DeLarge", cohort: :november},
-  {name: "The Wicked Witch of the West", cohort: :november},
-  {name: "Terminator", cohort: :november},
-  {name: "Freddy Krueger", cohort: :november},
-  {name: "The Joker", cohort: :november},
-  {name: "Joffrey Baratheon", cohort: :november},
-  {name: "Norman Bates", cohort: :november}
-]
-=end
-students = []
+
+class Student
+  
+  def initialize(name, cohort)
+    @name = name
+    @cohort = cohort
+  end
+
+  attr_accessor :name
+  attr_accessor :cohort
+
+  def print_student
+    puts "#{@name} joined in the Cohort: #{@cohort}"
+  end
+
+
+end
+
 
 class StudentList
 
   def initialize
     @students = []
   end
-
+  
   # Method to print list of students
   def print_student_list()
     puts "Students:"
@@ -51,7 +52,7 @@ class StudentList
     student = Student.new(name, cohort)
     @students.push(student)
   end
-
+  
   # Method to delete a student
   def delete_student()
     puts "Press num of student you want to delete"
@@ -59,12 +60,12 @@ class StudentList
       puts (idx + 1).to_s + ": " + student.name
     end
     student_idx = gets.chomp.to_i - 1
-    student_to_del = students[student_idx]
+    student_to_del = @students[student_idx]
     puts "Are you sure you want to delete: #{student_to_del.name}. Y/N"
     confirm = gets.chomp
     case confirm.upcase
     when "Y"
-      students.delete(student_to_del)
+      @students.delete(student_to_del)
       "You deleted student #{student_to_del.name} from the database"
     when "N"
     end
@@ -96,7 +97,7 @@ class StudentList
       @students[student_index].name = new_data.to_sym
     end
   end
-
+  
   # save students to file
   def save_students()
     # open file for write
