@@ -21,11 +21,18 @@ class Student
     @cohort = cohort
   end
 
+  attr_accessor :name
+  attr_accessor :cohort
+
   def print_student
     puts "#{@name} joined in the Cohort: #{@cohort}"
   end
 
+
 end
+new_student = Student.new("pizza", "party")
+
+print new_student.name
 
 students = []
 # Method to print list of students
