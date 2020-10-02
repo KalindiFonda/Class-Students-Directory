@@ -1,6 +1,6 @@
 
 class Student
-  
+
   def initialize(name, cohort)
     @name = name
     @cohort = cohort
@@ -22,7 +22,7 @@ class StudentList
   def initialize
     @students = []
   end
-  
+
   # Method to print list of students
   def print_student_list()
     puts "Students:"
@@ -52,7 +52,7 @@ class StudentList
     student = Student.new(name, cohort)
     @students.push(student)
   end
-  
+
   # Method to delete a student
   def delete_student()
     puts "Press num of student you want to delete"
@@ -97,7 +97,7 @@ class StudentList
       @students[student_index].name = new_data.to_sym
     end
   end
-  
+
   # save students to file
   def save_students()
     # open file for write
@@ -118,7 +118,7 @@ class StudentList
     # iterate over lines and read student name and cohort
     file.readlines.each do |line|
       name, cohort = line.chomp.split(",")
-      @students << {Student.new(name, cohort.to_sym)}
+      @students << Student.new(name, cohort.to_sym)
     end
     file.close
   end
