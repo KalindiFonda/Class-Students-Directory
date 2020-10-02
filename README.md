@@ -1,4 +1,4 @@
-# Student-Directory #
+# Classes now with classes #
 
 The student directory script allows you to manage the list of students enrolled.
 
@@ -7,4 +7,3 @@ The student directory script allows you to manage the list of students enrolled.
 ```shell
 ruby directory.rb
 ```
-#Classes now with classes
