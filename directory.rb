@@ -33,6 +33,16 @@ class StudentList
     puts "Overall, we have #{@students.count} students"
   end
 
+  #Method to find student
+  def find_student
+    puts "Press num of student you want to find"
+    @students.each_with_index do |student, idx|
+      puts (idx + 1).to_s + ": " + student.name
+    end
+    student_idx = gets.chomp.to_i - 1
+    return student_idx
+  end
+
   # Method to print only last names
   def print_last_name()
     last_names = []
@@ -55,11 +65,7 @@ class StudentList
 
   # Method to delete a student
   def delete_student()
-    puts "Press num of student you want to delete"
-    @students.each_with_index do |student, idx|
-      puts (idx + 1).to_s + ": " + student.name
-    end
-    student_idx = gets.chomp.to_i - 1
+    student_idx = find_student
     student_to_del = @students[student_idx]
     puts "Are you sure you want to delete: #{student_to_del.name}. Y/N"
     confirm = gets.chomp
@@ -73,9 +79,7 @@ class StudentList
 
   # Method to edit student details
   def edit_student()
-    student_index = 0
-    puts "Enter name of student to edit:"
-    input = gets.chomp
+    student_idx = find_student
     while true
       puts "Enter data to edit (name or cohort):"
       data_to_edit = gets.chomp
@@ -85,16 +89,11 @@ class StudentList
     end
     puts "Input new #{data_to_edit}:"
     new_data = gets.chomp
-    @students.each_with_index do |student, index|
-      if student.name == input
-        student_index = index
-      end
-    end
     case data_to_edit
     when "name"
-      @students[student_index].name = new_data
+      @students[student_idx].name = new_data
     when "cohort"
-      @students[student_index].name = new_data.to_sym
+      @students[student_idx].name = new_data.to_sym
     end
   end
 
